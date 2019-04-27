@@ -28,6 +28,18 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        implementation: require("sass"),
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`
+      }
+    },
+    {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "posts",
@@ -65,6 +77,7 @@ module.exports = {
         color: config.themeColor
       }
     },
+    "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     "gatsby-plugin-catch-links",
     "gatsby-plugin-twitter",

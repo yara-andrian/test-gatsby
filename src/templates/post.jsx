@@ -10,6 +10,7 @@ import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 import "./b16-tomorrow-dark.css";
 import "./post.css";
+import Img from 'gatsby-image';
 
 export default class PostTemplate extends React.Component {
   render() {
@@ -28,6 +29,7 @@ export default class PostTemplate extends React.Component {
           <Helmet>
             <title>{`${post.title} | ${config.siteTitle}`}</title>
           </Helmet>
+          <Img fixed={this.props.data.file.childImageSharp.fixed} />
           <SEO postPath={slug} postNode={postNode} postSEO />
           <div>
             <h1>{post.title}</h1>
@@ -48,6 +50,13 @@ export default class PostTemplate extends React.Component {
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
+    file(relativePath: { eq: "logos/logo-1024.png" }) {
+      childImageSharp {
+        fixed(width: 125, height: 125) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       timeToRead

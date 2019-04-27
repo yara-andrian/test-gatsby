@@ -11,6 +11,7 @@ class AboutPage extends Component {
         <div className="about-container">
           <Helmet title={`About | ${config.siteTitle}`} />
           <About />
+          <div>THis is new</div>
         </div>
       </Layout>
     );
